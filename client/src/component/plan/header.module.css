@@ -1,0 +1,21 @@
+.container{
+    margin-bottom:2em;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.button{
+    margin-left:1em;
+    margin-right:1em;
+    cursor: pointer;
+    border: none;
+    background:none;
+    font-size: 2em;
+}
+.button:hover{
+    font-size: 2.2em;
+    color:grey;
+}
+.year_month{
+    font-size: 2em;
+}

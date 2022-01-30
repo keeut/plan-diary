@@ -1,0 +1,7 @@
+.body{
+    width: 60%;
+    max-height: 100vh;
+    position:relative;
+    
+    background-color :whitesmoke;
+}

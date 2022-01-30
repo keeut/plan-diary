@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'font1';
+    src: url('../../font/font1.ttf');
+}
+.container{
+    display: flex;
+    align-items: center;
+}
+.name{
+    padding-top:10px;
+    font-family:'font1';
+    font-size: 3em;
+    text-align: center;
+    
+}
+.account_content{
+    box-shadow: 1px 1px 10px 1px rgb(161, 159, 159);
+    position: absolute;
+    top:4.5em;
+    right:1em;
+    border-radius: 3%;
+    height:20em;
+    background-color: white;
+}
+.account_button{
+    
+    border-radius: 50%;
+    font-size: 2em;
+
+}
+.user_container{
+    top:1em;
+    position: absolute;
+    display: flex;
+    right:3em;
+}
+.user{
+    margin-right: 1em;
+    padding-top: 7px;
+}
+
+.button_container{
+    display: flex;
+    flex-direction: column;
+}
+.logout{
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    width:15em;
+    height:3em;
+    border-radius: 4%;
+}
+.logout:hover{
+    background-color: whitesmoke;
+}
+.icon{
+    background-color: white;
+    border:none;
+    cursor: pointer;
+}

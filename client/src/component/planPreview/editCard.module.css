@@ -1,0 +1,31 @@
+.container{
+    background-color: aliceblue;
+    border-radius: 3%;
+    position: absolute;
+    top:8em;
+    height:25em;
+    width:27em;    
+    z-index: 100;
+    text-align: center;
+}
+.input_container{
+    position: relative;
+    top:1em;
+    text-align: center;
+    height:70%
+}
+.input{
+    border:none;
+    width:80%;
+    height:100%;
+}
+.button{
+    position: relative;
+    top:1.7em;
+}
+.header{
+    font-size: 2em;
+}
+.explanation{
+    font-size: 1em;
+}

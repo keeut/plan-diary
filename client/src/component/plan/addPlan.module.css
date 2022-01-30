@@ -1,0 +1,32 @@
+.container{
+    margin:5em;
+    background-color:whitesmoke;
+    z-index: 1;
+    position:absolute;
+    border:none;
+    border-radius: 3%;
+    width:40%;
+    height:40%;
+    text-align: center;
+}
+.header{
+    text-align: center;
+    padding-top:3px;
+    font-size: 1.3em;
+    border-bottom:solid lightskyblue;
+    margin-bottom: 1em;
+}
+.input_container{
+    text-align: center;
+    height:60%;
+}
+.input{
+    width:90%;
+    height:100%;
+    font-size:1.3em;
+}
+.button{
+    position: relative;
+    top:0.6em;
+    font-size:1.5em;
+}

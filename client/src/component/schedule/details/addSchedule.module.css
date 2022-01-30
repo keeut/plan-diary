@@ -1,0 +1,17 @@
+.addform{
+    background-color: aquamarine;
+    position: absolute;
+    width:10em;
+    height:10em;
+}
+.time{
+    width:100%;
+
+}
+.title{
+    width:100%;
+
+}
+.content{
+    width:100%;
+}

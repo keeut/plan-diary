@@ -1,0 +1,23 @@
+.container{
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid;
+    width:60%;
+    margin: auto;
+}
+.Dday{
+    border-right:1px solid cadetblue;
+    width: 20%;
+}
+.title{
+    width: 60%;
+}
+.delete{
+    font-size: 1em;
+    color: red;
+    border:none;
+    background: none;
+}
+.delete:hover{
+    color:lightpink;
+}

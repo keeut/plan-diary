@@ -1,0 +1,22 @@
+.conatiner{
+    background-color :white;
+    border-radius: 5%;
+    width:30%;
+    padding:1em;
+    position: relative;
+}
+.title{
+    text-align: center;
+    font-size: 2em;
+}
+.content{
+    font-size: 1.3em;
+}
+.button{
+    box-shadow: 1px 1px 6px 1px rgb(170, 167, 167);
+    width: 100%;
+    height: 18em;
+    border:none;
+    border-radius: 3%;
+    cursor: pointer;
+}

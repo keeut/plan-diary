@@ -1,0 +1,33 @@
+.container{
+    box-sizing: border-box;
+    bottom: 20vh;
+    margin:1em;
+    margin-top: 2em;
+    background-color:white;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    border-radius: 1em;
+    height:30%;
+    max-height:30%;
+    overflow: hidden;
+}
+.header{
+    align-items: center;
+    display: flex;
+    background-color: white;
+}
+.title{
+    width: 80%;
+    font-size: 1.5em;
+}
+.add_button{
+    cursor: pointer;
+    right:3em;
+    font-size: 1.2em;
+    background-color: thistle;
+    color: seagreen;
+    border:none;
+}
+.add_button:hover{
+    color:slateblue;
+}

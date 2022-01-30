@@ -1,0 +1,10 @@
+.container{
+    position: relative;
+    border-radius: 8%;
+    background-color: #EEEEEE
+    }
+    .date{
+        position:absolute;
+        width: 100%;
+        color:black;
+    }

@@ -1,0 +1,9 @@
+.container {
+    width:15em;
+    display: flex   ;
+    flex-direction: column;
+    padding-top: 4em;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:whitesmoke;
+}
