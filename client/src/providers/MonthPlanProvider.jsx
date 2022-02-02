@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {memo, useCallback, useState } from 'react';
 import MonthPlanContext from '../context/MonthPlanContext';
 import {getLastMonthDates,getThisMonthDates,getNextMonthDates} from '../service/calender';
 
@@ -10,14 +10,15 @@ const MonthPlanProvider = ({children}) => {
         {month:1, date:12, plan:'라기'},    
     ],[]);
     
-    const editPlan = (date,value)=>{
-        console.log([...daysPlan])
+    const editPlan = useCallback( (date,value)=>{
         const updated = [...daysPlan]
         updated.push({month:1,date:date,plan:value})
         setdays(updated)
-    }
+    },[daysPlan])
+
     return (
         <div>
+            {console.log('rerender Monthplanprovider')}
             <MonthPlanContext.Provider
                 value ={{daysPlan,getLastMonthDates,getThisMonthDates,getNextMonthDates,editPlan}}>
 

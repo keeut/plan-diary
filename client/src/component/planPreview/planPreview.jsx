@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import DayPlanContext from '../../context/DayPlanContext';
 import EditCard from './editCard';
 import FormerPlans from './formerPlans';
@@ -6,17 +6,19 @@ import PlanCard from './planCard';
 import styles from './planPreview.module.css'
 
 const PlanPreview = () => {
-    
+     
     const {todayPlan,onEditPlan,todayMonth,todayDate} = useContext(DayPlanContext)
 
     const [flag,setFlag] = useState(undefined,[])
 
-    const onClick =(cardName) =>{setFlag(cardName);
-    }
-    const onEdit =(value,cardName) =>{
+    const onClick =useCallback((cardName) =>{setFlag(cardName);
+    },[]);
+
+    const onEdit =useCallback((value,cardName) =>{
         onEditPlan(value,cardName)
         setFlag(undefined)
-    }
+    },[onEditPlan]);
+    
     return (
         <div className={styles.container}>
             <div className={styles.header}>

@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useRef ,useCallback, useState } from 'react';
 import styles from './editCard.module.css'
 
 const EditCard = (props) => {
@@ -8,12 +7,12 @@ const EditCard = (props) => {
     
     const [text,setText] =useState(props.content[props.cardName])
     
-    const onEdit = () => {
+    const onEdit = useCallback(() => {
     props.onEdit(inputRef.current.value,props.cardName)
-}
-    const onChange= (e) =>{
+    },[])
+    const onChange= useCallback((e) =>{
         setText(e.target.value)
-    }
+    },[])
     return(
     <div className={styles.container}>
         <div className={styles.header}>

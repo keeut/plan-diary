@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import DayPlanContext from '../../context/DayPlanContext';
 import FormerPlanCard from './formerPlanCard';
 import styles from './formerPlans.module.css'
-const FormerPlans = () => {
+const FormerPlans = memo(() => {
 
-    const {allPlans} = useContext(DayPlanContext)
-
-    const recentPlans = allPlans.reverse().slice(1,4)
-    console.log(recentPlans)
+    const {formerPlans} = useContext(DayPlanContext)
 
     return (
         <div>
@@ -20,7 +17,7 @@ const FormerPlans = () => {
                 <div>todo</div>
 
             </div>
-            {recentPlans.map(plan => (
+            {formerPlans.map(plan => (
                 <FormerPlanCard date = {plan.date} 
                     plan = {plan.plan}
                     complete = {plan.complete}
@@ -29,6 +26,6 @@ const FormerPlans = () => {
             </div>
         </div>
     );
-};
+});
 
 export default FormerPlans;

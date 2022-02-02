@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useContext,useCallback, useState} from 'react';
 import AuthContext from '../../context/AuthContext';
 import Signup from '../signup/signup';
 import styles from './login.module.css'
@@ -11,16 +10,16 @@ const Login = (props) => {
     const [password,setPassword] =useState('')
     const [signupflag, setSignupFlag] = useState(false)
     
-    const onSubmit = (event)=>{
+    const onSubmit = useCallback((event)=>{
         event.preventDefault();
         login(userId,password).catch((Error)=>{console.log(Error)});
-    };
+    },[userId,password]);
 
-    const onClickSignup = () => {
+    const onClickSignup = useCallback( () => {
         setSignupFlag(true)
-    };
+    },[]);
 
-    const onChange = (e) =>{
+    const onChange = useCallback((e) =>{
         switch (e.target.name) {
             case 'id':
                 setUserId(e.target.value)
@@ -30,7 +29,7 @@ const Login = (props) => {
                 setPassword(e.target.value)    
                 break;
         }
-    };
+    },[]);
 
     return(
     <div className={styles.container}>

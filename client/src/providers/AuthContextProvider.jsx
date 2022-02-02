@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, memo, useCallback, useEffect, useState } from 'react';
 import Login from '../component/login/login';
 import AuthContext from '../context/AuthContext';
 
-const AuthContextProvider = ({children,authservice}) => {
+const AuthContextProvider = memo(({children,authservice}) => {
 
     useEffect(()=>{
         const token = localStorage.getItem('token')
@@ -10,26 +10,30 @@ const AuthContextProvider = ({children,authservice}) => {
         //토큰 있나 확인하고 있으면 로그인
     },[])
 
-    const [user,setUser] = useState(undefined)
+    const [user,setUser] = useState(undefined,[authservice])
 
-    const login = async (userId,password) => {
+    const login = useCallback( async (userId,password) => {
         authservice.login(userId,password).then(data=>(setUser(data.id)))
-    };
+    },[authservice]);
 
-    const signup = async (userId,password,name,email) => {
+    const signup = useCallback(async (userId,password,name,email) => {
         authservice.signup(userId,password,name,email).then(data=>(setUser(data.id)))
-    }
+    },[authservice])
 
-    const logout = async() =>{
+    const logout = useCallback(async() =>{
         authservice.logout()
-    }
+    },[authservice])
 
     return (
+        <Fragment>
+            {console.log('rerender Authprovider')}
         <AuthContext.Provider value={{login,signup,user,logout,setUser}}>
+            
             {user? children : <Login />}
         </AuthContext.Provider>
+        </Fragment>
     );
-};
+});
 
 export default AuthContextProvider
 

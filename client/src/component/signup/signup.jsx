@@ -1,6 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
+import React, {  useState,useCallback } from 'react';
 import styles from './signup.module.css'
+
 const Signup = ({signup}) => {
 
     const [userId,setUserId] =useState('')
@@ -8,14 +8,14 @@ const Signup = ({signup}) => {
     const [name,setName] =useState('')
     const [email,setEmail] =useState('')
   
-    const onSubmit = (event)=>{
+    const onSubmit = useCallback((event)=>{
         event.preventDefault();
         signup(userId,password,name,email).catch(Error)
-    };
+    },[]);
   
     
 
-    const onChange = (e) =>{
+    const onChange = useCallback((e) =>{
         switch (e.target.name) {
             case 'id':
                 setUserId(e.target.value)
@@ -31,7 +31,7 @@ const Signup = ({signup}) => {
                 setEmail(e.target.value)    
                 break;
         }
-    };
+    },[]);
 
 
     return (

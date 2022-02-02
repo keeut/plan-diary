@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import SideBarButtons from './sideBarButtons';
 import styles from './sideBar.module.css'
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const SideBar = () => {
 
     const navigate = useNavigate();
 
-    const onClick = (name) =>{
+    const onClick = useCallback((name) =>{
         switch (name) {
             case '플랜':
                 navigate('/plan')
@@ -22,7 +22,7 @@ const SideBar = () => {
                 default:
                 break;
         }
-    }
+    },[])
 
     return (
         <div className={styles.container} >

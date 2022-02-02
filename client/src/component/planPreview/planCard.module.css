@@ -10,6 +10,7 @@
     font-size: 2em;
 }
 .content{
+    word-break: break-all;
     font-size: 1.3em;
 }
 .button{

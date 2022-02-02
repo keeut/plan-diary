@@ -1,24 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
 import styles from './navBar.module.css'
 
-const NavBar = (props) =>{
-    
+const NavBar = () =>{
+    console.log('navbar')
     const {user,logout,setUser} = useContext(AuthContext)
     
     const [onAccount,setOnAccount] = useState('')
 
     const navigate = useNavigate();
-    const goHome = ()=>{
+    const goHome = useCallback(()=>{
         navigate('/')
-    }
-    const onLogout = () =>{
+    },[])
+    const onLogout = useCallback(() =>{
         if(window.confirm('로그아웃 하시겠습니까?')){
         logout();
         setUser('')
-        }}
-    const onClickAccount = () =>{
+        }},[]);
+         
+    const onClickAccount = useCallback(() =>{
         switch (onAccount) {
             case '':
                 setOnAccount(true)
@@ -27,10 +28,11 @@ const NavBar = (props) =>{
                 setOnAccount('')
                 break;
         }
-    }
+    },[])
 
 return(
     <div className={styles.container}>
+        {console.log('rerender navbar   ')}
         <button className={styles.icon} onClick={goHome}>
         <div className={styles.name}>PlAN-DIARY</div>
         </button>

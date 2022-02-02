@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Fragment, memo, useCallback, useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import DayPlanContext from '../context/DayPlanContext';
 
@@ -15,13 +15,17 @@ const DayPlanProvider = ({children,planservice}) => {
 
     useEffect(()=>{
         planservice.findPlanByUserId(user).then(plans=>{
-            setAllPlans(plans)
+            plans.reverse();
+        //오늘 이전의 플랜들 찾기
+            setFormerPlans(plans.slice(1,4))            
+            
+        //오늘의 플랜찾기
             let plan = []
-            if (plans.at(-1).date !== date){      //새로생긴 -1번인덱스를 사용할 수 있게해주는 .at()구문     
+            if (plans[0].date !== date){      //새로생긴 -1번인덱스를 사용할 수 있게해주는 .at()구문  /// reverse필요해서 이건 안쓰게됨
                 planservice.createDayPlan(date,user)
             }             //오늘의 플랜 쓴거 없으면 만들어줘야 update하니까 이구문써줬음
             else{
-                plan = plans.at(-1)
+                plan = plans[0]
             }
 
             setTodayPlan({plan:plan.plan,
@@ -30,11 +34,14 @@ const DayPlanProvider = ({children,planservice}) => {
              });
             }
         ,[planservice])
-        
-    const [allPlans, setAllPlans] = useState([])
+            
+
+    const [formerPlans, setFormerPlans] = useState([])
     const [todayPlan,setTodayPlan] = useState([]);
 
-    const onEditPlan = (value,cardName) => {
+    
+    const onEditPlan =  useCallback((value,cardName) => {
+        console.log('rerender function onEditplan')
         const updated = {...todayPlan};
         updated[cardName] = value;
         setTodayPlan(updated)
@@ -49,13 +56,13 @@ const DayPlanProvider = ({children,planservice}) => {
                 planservice.editTodo(date,value)
                 break;
         }
-    }
+    },[todayPlan]);
 
     return (
-        <DayPlanContext.Provider value= {{todayPlan,onEditPlan,todayMonth,todayDate,allPlans}}>
-            {console.log(todayPlan)}
+        <Fragment>{console.log('rerender dayPlanprovider')}
+        <DayPlanContext.Provider value= {{todayPlan,onEditPlan,todayMonth,todayDate,formerPlans}}>
             {children}
-        </DayPlanContext.Provider>
+        </DayPlanContext.Provider></Fragment>   
     );
 };
 
